@@ -40,20 +40,20 @@ def get_seasons(req, playerSoup):
 def makeAllPlayerReq():
     # list of all NBA players
     allPlayers = []
-    for letter in alphabet:
-        # make request for current letter
-        req = requests.get(base_url + letter)
-        try:
-            req.raise_for_status()
-        except Exception as exc:
-            print('There was a problem: %s' % (exc))
-        playerSoup = BeautifulSoup(req.text, "html.parser")
+#    for letter in alphabet:
+#        # make request for current letter
+#        req = requests.get(base_url + letter)
+#        try:
+#            req.raise_for_status()
+#        except Exception as exc:
+#            print('There was a problem: %s' % (exc))
+#        playerSoup = BeautifulSoup(req.text, "html.parser")
         # select tags with player names
-        players = playerSoup.select('th.left a')
+#        players = playerSoup.select('th.left a')
         # add all player names to list
-        for player in players:
-            allPlayers.append(player.getText())
-    return allPlayers
+#        for player in players:
+#            allPlayers.append(player.getText())
+#    return allPlayers
 
 def makePlayerReq(name):
     name = name.lower().split(',')
@@ -82,7 +82,6 @@ def writePlayersToFile(all_players):
                 file.write("%s\n" % player)
     
 # get all players
-i = 0
 with open('names.txt','r') as file:
     for line in file:
         line = line.replace(" ", "").replace(".","")
